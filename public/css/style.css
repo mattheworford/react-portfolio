@@ -1534,6 +1534,7 @@ input[type="submit"]:focus {
 #mt_banner_simple {
   background-attachment: fixed !important;
   background-position: center center !important;
+  background: url("../images/banner-bg-dark.png");
   padding: 100px 0;
   position: relative;
 }

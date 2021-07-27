@@ -15,12 +15,12 @@ This respository contains the code behind my portfolio website. This website is 
 
 ## Preview
 
-![Home Page](public/img/readme/home.png)
+![Home Page](public/images/readme/home.png)
 
-![About Page](public/img/readme/about.png)
+![About Page](public/images/readme/about.png)
 
-![Experience Page](public/img/readme/portfolio/experience.png)
+![Experience Page](public/images/readme/portfolio/experience.png)
 
-![Projects Page](public/img/readme/portfolio/projects.png)
+![Projects Page](public/images/readme/portfolio/projects.png)
 
-![Contact Page](public/img/readme/contact.png)
+![Contact Page](public/images/readme/contact.png)
