@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class Header extends React.Component {
   render() {
@@ -26,7 +26,7 @@ class Header extends React.Component {
                         <span className="icon-bar"></span>
                       </button>
                       <div className="logo">
-                        <a href="index.html">
+                        <a href="/">
                           <img src="images/logo-white.png" alt="Logo" />
                         </a>
                       </div>
@@ -34,14 +34,14 @@ class Header extends React.Component {
                     <div className="navbar-collapse collapse">
                       <ul className="nav navbar-nav navbar-right">
                         <li>
-                          <a href="index.html">home</a>
+                          <a href="/">home</a>
                         </li>
                         <li>
-                          <a href="about.html">about</a>
+                          <a href="/about">about</a>
                         </li>
                         <li className="dropdown">
                           <a
-                            href="youtube.com"
+                            href="/"
                             className="dropdown-toggle"
                             data-toggle="dropdown"
                           >
@@ -49,15 +49,15 @@ class Header extends React.Component {
                           </a>
                           <ul className="dropdown-menu" role="menu">
                             <li>
-                              <a href="resume.html">experience</a>
+                              <a href="/experience">experience</a>
                             </li>
                             <li>
-                              <a href="projects.html">projects</a>
+                              <a href="/projects">projects</a>
                             </li>
                           </ul>
                         </li>
                         <li>
-                          <a href="contact.html">contact</a>
+                          <a href="/contact">contact</a>
                         </li>
                       </ul>
                     </div>

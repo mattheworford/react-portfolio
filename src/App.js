@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
-import Header from './Header';
-import Footer from './Footer';
-import Preloader from './Preloader';
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Experience from "./components/Experience";
+import Footer from "./components/Footer";
+import Projects from "./components/Projects";
 
 class App extends React.Component {
   render() {
@@ -11,53 +16,38 @@ class App extends React.Component {
         <Preloader />
         <div id="home"></div>
         <Header />
-        <section
-          id="mt_banner_simple"
-          style={{background: "url('./public/images/banner-bg-dark.png');"}}
-          className="darker-mine-shaft"
-        >
-          <div className="container darker">
-            <div className="row">
-              <div className="banner-wrapper">
-                <div className="banner-caption">
-                  <h2>
-                    <span className="rt_animated">
-                      <span>matthew john</span>
-                    </span>
-                    <span className="rt_animated">
-                      <span>orford</span>
-                    </span>
-                  </h2>
-                  <p className="subtitle">
-                    backend software engineer
-                    <span className="border_banner"></span>
-                  </p>
-                </div>
-                <div className="banner_img">
-                  <img src="images/banner-img-black.png" alt="Banner" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="contact_me" className="contact_me_dark">
-          <div className="container darker">
-            <div className="row">
-              <h1 className="text-center">
-                a computer science student currently based in l.a. with
-                experience in native app development, natural language
-                processing, various web technologies and much more
-              </h1>
-              <a href="contact.html" className="mt_btn_color">
-                contact me
-              </a>
-            </div>
-          </div>
-        </section>
+        <PageRouter />
         <Footer />
       </div>
     );
   }
 }
+
+const Preloader = () => (
+  <div className="loading">
+    <div className="spinner">
+      <div className="double-bounce1"></div>
+      <div className="double-bounce2"></div>
+    </div>
+  </div>
+);
+
+const HomePage = () => <Home></Home>;
+const AboutPage = () => <About></About>;
+const ExperiencePage = () => <Experience></Experience>;
+const ProjectsPage = () => <Projects></Projects>;
+const ContactPage = () => <Contact></Contact>;
+
+const PageRouter = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={HomePage}></Route>
+      <Route exact path="/about" component={AboutPage}></Route>
+      <Route exact path="/experience" component={ExperiencePage}></Route>
+      <Route exact path="/projects" component={ProjectsPage}></Route>
+      <Route exact path="/contact" component={ContactPage}></Route>
+    </Switch>
+  </BrowserRouter>
+);
 
 export default App;

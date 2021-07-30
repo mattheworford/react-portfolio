@@ -8,7 +8,7 @@ class Footer extends React.Component {
           <div className="row">
             <div className="col-md-3 text-left">
               <div className="footer_address">
-                <p>Los Angeles, CA</p>
+                <p>Salt Lake City, UT</p>
                 <span>
                   <a href="mailto:mattorford9@gmail.com">
                     mattorford9@gmail.com
@@ -28,7 +28,7 @@ class Footer extends React.Component {
                     <i className="fa fa-linkedin"></i>
                   </a>
                   <a
-                    href="https://github.com/mjorford"
+                    href="https://github.com/mattheworford"
                     title="GitHub"
                   >
                     <i className="fa fa-github"></i>
@@ -50,7 +50,7 @@ class Footer extends React.Component {
             </div>
             <div className="col-md-6 text-center">
               <div className="footer_logo">
-                <a href="youtube.com">
+                <a href="/">
                   <img src="images/logo-icon-white.png" alt="Footer Logo" />
                 </a>
               </div>
