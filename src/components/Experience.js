@@ -2,144 +2,195 @@ import React from "react";
 
 import Banner from "./Banner";
 
-class Experience extends React.Component {
-  render() {
-    return (
-      <div>
-        <Banner title="Experience" />
-        <section id="blog_main_sec" className="darker-shaft">
-          <div className="container darker">
-            <div className="row">
-              <div className="col-md-8">
-                <EducationSection />
-                <WorkSection />
+import { experienceData } from "../data";
+
+const workSkills = experienceData.work.map(item => item.skills).flat(1).filter((v, i, a) => a.indexOf(v) === i);
+const researchSkills = experienceData.research.map(item => item.skills).flat(1).filter((v, i, a) => a.indexOf(v) === i);
+const allSkills = workSkills.concat(researchSkills);
+
+const Experience = () => (
+  <div>
+    <Banner title="Experience" />
+    <section id="blog_main_sec" className="darker-shaft">
+      <div className="container darker">
+        <div className="row">
+          <div className="col-md-8">
+            <EducationSection />
+            <WorkSection />
+            <ResearchSection />
+          </div>
+          <aside className="col-md-4">
+            <div className="widget widget_recent_entries">
+              <div className="recent-posts">
+                <h3 className="blog_heading_border"> HONORS & AWARDS </h3>
+                {experienceData.honorsAndAwards.map(item =>
+                  <div className="recent-posts-block">
+                    <p>{item.title}</p>
+                    <span>{item.time}</span>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-        </section>
+            <div className="clearfix"></div>
+            <section className="widget widget_tag_cloud">
+              <h3 className="blog_heading_border"> ALL SKILLS </h3>
+              <ul>
+                {allSkills.map(skill => <li><a> {skill} </a></li>)}
+              </ul>
+            </section>
+          </aside>
+        </div>
       </div>
-    );
-  }
-}
+    </section>
+  </div>
+);
 
 const EducationSection = () => (
   <div>
     <SectionHeader title="EDUCATION" />
     <div className="post_item">
       <div className="post_title">
-        <h3>University of Southern California</h3>
+        <h3>{experienceData.education.school}</h3>
         <ul className="list-inline list-unstyled">
           <li>
             <i className="fa fa-graduation-cap"></i>&nbsp;{" "}
-            <i>B.S. Computer Science</i>
+            <i>{experienceData.education.degree}</i>
           </li>
           <li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i className="fa fa-calendar"></i>
-            &nbsp; Fall 2017 - Spring 2021
+            &nbsp; <i>{experienceData.education.time}</i>
           </li>
         </ul>
       </div>
       <div className="post_body">
         <SectionDetail
           title="Courses"
-          body="Artificial
-                Intelligence, Operating Systems, Theory of Computing,
-                Professional C++, iOS App Development, Computer Systems,
-                Algorithms, Software Engineering, Embedded Systems, Data
-                Structures, Object-Oriented Design, Discrete Methods & Writing"
+          body={experienceData.education.courses}
         />
         <SectionDetail
           title="Activities"
-          body="HackSC, Data
-                Science Club, Trojan Scholars Society, Ski and Snowboard Club &
-                Pi Kappa Alpha"
+          body={experienceData.education.activities}
         />
         <SectionDetail
           title="Honors"
-          body="Presidential Scholar & Dean's List"
+          body={experienceData.education.honors}
         />
       </div>
     </div>
   </div>
 );
 
-function WorkSection() {
-  const creditKarmaSweSkills = ["Scala", "GraphQL", "TypeScript"];
-  const itpSkills = ["C++", "Xcode", "TravisCI"];
+const WorkSection = () => (
+  <div className="work_section">
+    <SectionHeader title="WORK" />
+    {experienceData.work.map(item => {
+      return (
+        <WorkExperience
+          company={item.company}
+          position={item.position}
+          location={item.location}
+          time={item.time}
+          description={item.description}
+          skills={item.skills}
+        />
+      )
+    })}
+  </div>
+);
 
-  return (
-    <div>
-      <SectionHeader title="WORK" />
-      <WorkExperience
-        company="Credit Karma"
-        position="Software Engineer II"
-        location="Charlotte, NC"
-        time="Present"
-        description="Building and maintaining the backend services that power Credit Karma's Home product"
-        skills={creditKarmaSweSkills}
-      />
-      <WorkExperience
-        company="USC Viterbi School of Engineering"
-        position="Teaching Assistant"
-        location="Los Angeles, CA"
-        time="Spring 2021"
-        description="Grade programming assignments, host office hours and make myself available as a resource to help students in Prof. Nathan Greenfield's course: ITP 365 (Managing Data in C++)"
-        skills={itpSkills}
-      />
+const ResearchSection = () => (
+  <div className="research_section">
+    <SectionHeader title="RESEARCH" />
+    {experienceData.research.map(item => {
+      return (
+        <ResearchExperience
+          company={item.company}
+          location={item.location}
+          time={item.time}
+          description={item.description}
+          skills={item.skills}
+        />
+      )
+    })}
+  </div>
+);
+
+const SectionHeader = (props) => (
+  <h2 className="blog_heading_border">{props.title}</h2>
+);
+
+const WorkExperience = (props) => (
+  <div className="post_item">
+    <div className="post_title">
+      <h3>{props.company}</h3>
+      <ul className="list-inline list-unstyled">
+        <li>
+          <i className="fa fa-user"></i>&nbsp; <i>{props.position}</i>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fa fa-map-marker"></i>
+          &nbsp;&nbsp;
+          <i>{props.location}</i>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fa fa-calendar"></i>
+          &nbsp;&nbsp;
+          <i>{props.time}</i>
+        </li>
+      </ul>
     </div>
-  );
-}
+    <div className="post_body">
+      <p>{props.description}</p>
+      <aside>
+        <section className="widget widget_tag_cloud">
+          <ul><WidgetsList skills={props.skills} /></ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+);
 
-function SectionHeader(props) {
-  return <h2 className="blog_heading_border">{props.title}</h2>;
-}
+const ResearchExperience = (props) => (
+  <div className="post_item">
+    <div className="post_title">
+      <h3>{props.company}</h3>
+      <ul className="list-inline list-unstyled">
+        <li>
+          <i className="fa fa-map-marker"></i>
+          &nbsp;&nbsp;
+          <i>{props.location}</i>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fa fa-calendar"></i>
+          &nbsp;&nbsp;
+          <i>{props.time}</i>
+        </li>
+      </ul>
+    </div>
+    <div className="post_body">
+      <p>{props.description}</p>
+      <aside>
+        <section className="widget widget_tag_cloud">
+          <ul><WidgetsList skills={props.skills} /></ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+);
 
-function WorkExperience(props) {
-  const skills = props.skills;
-  const widgetsList = skills.map((item) => (
+const WidgetsList = (props) => (
+  props.skills.map((item) => (
     <li>
       <a href="/experience"> {item} </a>
     </li>
-  ));
-  return (
-    <div className="post_item">
-      <div className="post_title">
-        <h3>{props.company}</h3>
-        <ul className="list-inline list-unstyled">
-          <li>
-            <i className="fa fa-user"></i>&nbsp; <i>{props.position}</i>
-          </li>
-          <li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fa fa-map-marker"></i>
-            &nbsp;&nbsp;
-            {props.location}
-          </li>
-          <li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fa fa-calendar"></i>
-            &nbsp;&nbsp;
-            {props.time}
-          </li>
-        </ul>
-      </div>
-      <div className="post_body">
-        <p>{props.description}</p>
-        <aside>
-          <section className="widget widget_tag_cloud">
-            <ul>{widgetsList}</ul>
-          </section>
-        </aside>
-      </div>
-    </div>
-  );
-}
+  ))
+);
 
-function SectionDetail(props) {
-  return (
-    <p>
-      <b>{props.title}</b>&nbsp;&nbsp;&#8212;&nbsp;&nbsp;{props.body}
-    </p>
-  );
-}
+const SectionDetail = (props) => (
+  <p>
+    <b>{props.title}</b>&nbsp;&nbsp;&#8212;&nbsp;&nbsp;{props.body}
+  </p>
+);
 
 export default Experience;

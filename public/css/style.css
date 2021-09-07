@@ -10,7 +10,7 @@
  1.6) Newsletter
  1.7) Contact
  1.8) Footer
- 1.9) About
+ 1.9) About Page
  2.0) Portfolio Detail
  2.1) Blog
  2.2) Blog Single Page
@@ -610,6 +610,19 @@ blockquote span:before {
 
 .social_icons a:hover:before {
   background: #000000;
+}
+
+.work_section {
+  margin-top: 60px;
+}
+
+.research_section {
+  margin-top: 60px;
+}
+
+h3.blog_heading_border {
+  letter-spacing: 4px;
+  font-size: 24px;
 }
 
 .blog_heading_border {
@@ -4950,7 +4963,8 @@ form[id="contact_form"] {
 
 aside .widget {
   background-color: #fff;
-  margin-bottom: 50px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
 }
 
 aside .widget h3 {
@@ -5316,7 +5330,7 @@ aside .widget_tag_cloud ul li a:focus {
 }
 
 #blog_main_sec {
-  padding: 100px 0px 65px;
+  padding: 60px 0px 65px;
   background-color: #fff;
   position: relative;
 }
@@ -5386,11 +5400,6 @@ aside .widget_tag_cloud ul li a:focus {
   color: #ffffff;
 }
 
-.widget {
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
 .darker aside .widget {
   background: transparent;
 }
@@ -5437,7 +5446,9 @@ aside .widget_tag_cloud ul li a:focus {
 }
 
 .recent-posts .recent-posts-block span {
-  font-size: 12px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0px;
   color: #cdcdcd;
 }
 
