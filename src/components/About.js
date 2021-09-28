@@ -19,9 +19,16 @@ const AboutMeSection = () => (
         <div className="row">
           <div className="col-xs-12 col-sm-6 mt_about_me">
             <p>
-              {aboutData.bio.map(paragraph => {
-                return (paragraph != aboutData.bio.lastItem ?
-                  <div>{paragraph}<br /><br /></div> : <div>{paragraph}</div>);
+              {aboutData.bio.map((paragraph) => {
+                return paragraph !== aboutData.bio.lastItem ? (
+                  <div>
+                    {paragraph}
+                    <br />
+                    <br />
+                  </div>
+                ) : (
+                  <div>{paragraph}</div>
+                );
               })}
             </p>
             <a
@@ -51,11 +58,12 @@ const SkillsSection = () => (
           <div className="col-sm-6">
             <div className="mt_experience">
               <h3>current work &amp; education</h3>
-              {aboutData.experience.map(position => {
+              {aboutData.experience.map((position) => {
                 return (
                   <div className="mt_work_postion">
                     <h4>
-                      {position.company} <span>&#183;</span> <i>{position.role}</i>
+                      {position.company} <span>&#183;</span>{" "}
+                      <i>{position.role}</i>
                     </h4>
                     <p>{position.description}</p>
                   </div>
@@ -67,8 +75,10 @@ const SkillsSection = () => (
             <div className="mt_skills">
               <h3>top skills</h3>
               <div className="right mt_skill-progress animate move-fadeInUp">
-                {aboutData.skills.map(skill => {
-                  return <SkillBar name={skill.name} percentage={skill.percentage} />;
+                {aboutData.skills.map((skill) => {
+                  return (
+                    <SkillBar name={skill.name} percentage={skill.percentage} />
+                  );
                 })}
               </div>
             </div>

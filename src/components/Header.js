@@ -25,7 +25,7 @@ const Header = () => (
                   </button>
                   <div className="logo">
                     <a href="/">
-                      <img src="images/logo-white.png" alt="Logo" />
+                      <img src="/images/logo-white.png" alt="Logo" />
                     </a>
                   </div>
                 </div>

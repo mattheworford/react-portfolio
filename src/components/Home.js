@@ -3,19 +3,20 @@ import { generalData } from "../data";
 
 const Home = () => (
   <div>
-    <section
-      id="mt_banner_simple"
-      className="darker-mine-shaft"
-    >
+    <section id="mt_banner_simple" className="darker-mine-shaft">
       <div className="container darker">
         <div className="row">
           <div className="banner-wrapper">
             <div className="banner-caption">
               <h2>
                 <span className="rt_animated">
-                    {generalData.firstName.toLowerCase() + " " + generalData.middleName.toLowerCase()}
+                  {generalData.firstName.toLowerCase() +
+                    " " +
+                    generalData.middleName.toLowerCase()}
                 </span>
-                <span className="rt_animated">{generalData.lastName.toLowerCase()}</span>
+                <span className="rt_animated">
+                  {generalData.lastName.toLowerCase()}
+                </span>
               </h2>
               <p className="subtitle">
                 {generalData.jobTitle}

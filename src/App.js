@@ -8,7 +8,7 @@ import Home from "./components/Home";
 import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
-// import ProjectDetails from "./components/ProjectDetails";
+import ProjectDetails from "./components/ProjectDetails";
 
 const App = () => (
   <div className="App">
@@ -33,11 +33,13 @@ const HomePage = () => <Home></Home>;
 const AboutPage = () => <About></About>;
 const ExperiencePage = () => <Experience></Experience>;
 const ProjectsPage = () => <Projects></Projects>;
-// const ShowpaPage = () => <ProjectDetails name="Showpa"></ProjectDetails>;
-// const NlpDetails = () => <ProjectDetails name="NLP"></ProjectDetails>;
-// const IctDetails = () => <ProjectDetails name="ICT"></ProjectDetails>;
-// const WussOpenDetails = () => <ProjectDetails name="WussOpen"></ProjectDetails>;
-// const PersonalSiteDetails = () => <ProjectDetails name="Personal Site"></ProjectDetails>;
+const ShowpaPage = () => <ProjectDetails name="showpa"></ProjectDetails>;
+const NlpDetails = () => <ProjectDetails name="nlp"></ProjectDetails>;
+const IctDetails = () => <ProjectDetails name="ict"></ProjectDetails>;
+const WussOpenDetails = () => <ProjectDetails name="wussopen"></ProjectDetails>;
+const PersonalSiteDetails = () => (
+  <ProjectDetails name="personal-site"></ProjectDetails>
+);
 const ContactPage = () => <Contact></Contact>;
 
 const PageRouter = () => (
@@ -47,11 +49,19 @@ const PageRouter = () => (
       <Route exact path="/about" component={AboutPage}></Route>
       <Route exact path="/experience" component={ExperiencePage}></Route>
       <Route exact path="/projects" component={ProjectsPage}></Route>
-      {/* <Route exact path="/projects/showpa" component={ShowpaPage}></Route> */
-      /* <Route exact path="/projects/nlp" component={NlpDetails}></Route>
+      <Route exact path="/projects/showpa" component={ShowpaPage}></Route>
+      <Route exact path="/projects/nlp" component={NlpDetails}></Route>
       <Route exact path="/projects/ict" component={IctDetails}></Route>
-      <Route exact path="/projects/wussopen" component={WussOpenDetails}></Route>
-      <Route exact path="/projects/personal-site" component={PersonalSiteDetails}></Route> */}
+      <Route
+        exact
+        path="/projects/wussopen"
+        component={WussOpenDetails}
+      ></Route>
+      <Route
+        exact
+        path="/projects/personal-site"
+        component={PersonalSiteDetails}
+      ></Route>
       <Route exact path="/contact" component={ContactPage}></Route>
     </Switch>
   </BrowserRouter>

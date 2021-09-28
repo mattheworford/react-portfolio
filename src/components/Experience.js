@@ -1,11 +1,16 @@
 import React from "react";
+import { experienceData } from "../data";
 
 import Banner from "./Banner";
 
-import { experienceData } from "../data";
-
-const workSkills = experienceData.work.map(item => item.skills).flat(1).filter((v, i, a) => a.indexOf(v) === i);
-const researchSkills = experienceData.research.map(item => item.skills).flat(1).filter((v, i, a) => a.indexOf(v) === i);
+const workSkills = experienceData.work
+  .map((item) => item.skills)
+  .flat()
+  .filter((v, i, a) => a.indexOf(v) === i);
+const researchSkills = experienceData.research
+  .map((item) => item.skills)
+  .flat()
+  .filter((v, i, a) => a.indexOf(v) === i);
 const allSkills = workSkills.concat(researchSkills);
 
 const Experience = () => (
@@ -23,19 +28,23 @@ const Experience = () => (
             <div className="widget widget_recent_entries">
               <div className="recent-posts">
                 <h3 className="blog_heading_border"> HONORS & AWARDS </h3>
-                {experienceData.honorsAndAwards.map(item =>
+                {experienceData.honorsAndAwards.map((item) => (
                   <div className="recent-posts-block">
                     <p>{item.title}</p>
                     <span>{item.time}</span>
                   </div>
-                )}
+                ))}
               </div>
             </div>
             <div className="clearfix"></div>
             <section className="widget widget_tag_cloud">
               <h3 className="blog_heading_border"> ALL SKILLS </h3>
               <ul>
-                {allSkills.map(skill => <li><a> {skill} </a></li>)}
+                {allSkills.map((skill) => (
+                  <li>
+                    <a> {skill} </a>
+                  </li>
+                ))}
               </ul>
             </section>
           </aside>
@@ -72,10 +81,7 @@ const EducationSection = () => (
           title="Activities"
           body={experienceData.education.activities}
         />
-        <SectionDetail
-          title="Honors"
-          body={experienceData.education.honors}
-        />
+        <SectionDetail title="Honors" body={experienceData.education.honors} />
       </div>
     </div>
   </div>
@@ -84,7 +90,7 @@ const EducationSection = () => (
 const WorkSection = () => (
   <div className="work_section">
     <SectionHeader title="WORK" />
-    {experienceData.work.map(item => {
+    {experienceData.work.map((item) => {
       return (
         <WorkExperience
           company={item.company}
@@ -94,7 +100,7 @@ const WorkSection = () => (
           description={item.description}
           skills={item.skills}
         />
-      )
+      );
     })}
   </div>
 );
@@ -102,7 +108,7 @@ const WorkSection = () => (
 const ResearchSection = () => (
   <div className="research_section">
     <SectionHeader title="RESEARCH" />
-    {experienceData.research.map(item => {
+    {experienceData.research.map((item) => {
       return (
         <ResearchExperience
           company={item.company}
@@ -111,7 +117,7 @@ const ResearchSection = () => (
           description={item.description}
           skills={item.skills}
         />
-      )
+      );
     })}
   </div>
 );
@@ -144,7 +150,9 @@ const WorkExperience = (props) => (
       <p>{props.description}</p>
       <aside>
         <section className="widget widget_tag_cloud">
-          <ul><WidgetsList skills={props.skills} /></ul>
+          <ul>
+            <WidgetsList skills={props.skills} />
+          </ul>
         </section>
       </aside>
     </div>
@@ -172,20 +180,21 @@ const ResearchExperience = (props) => (
       <p>{props.description}</p>
       <aside>
         <section className="widget widget_tag_cloud">
-          <ul><WidgetsList skills={props.skills} /></ul>
+          <ul>
+            <WidgetsList skills={props.skills} />
+          </ul>
         </section>
       </aside>
     </div>
   </div>
 );
 
-const WidgetsList = (props) => (
+const WidgetsList = (props) =>
   props.skills.map((item) => (
     <li>
       <a href="/experience"> {item} </a>
     </li>
-  ))
-);
+  ));
 
 const SectionDetail = (props) => (
   <p>

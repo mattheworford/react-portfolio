@@ -1928,6 +1928,9 @@ input[type="submit"]:focus {
 #rt_banner_slider {
   position: relative;
   height: 500px;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 #rt_banner_slider .banner_caption_text {
@@ -2116,7 +2119,7 @@ input[type="submit"]:focus {
 }
 
 #mt_portfolio .mt_filter ul li {
-  margin-right: 15px;
+  margin-right: 50px;
   padding: 0;
   margin-bottom: 17px;
 }
@@ -3932,7 +3935,7 @@ form[id="contact_form"] {
   margin-bottom: 15px;
   color: #000000;
   font-weight: 700;
-  font-family: "Playfair Display";
+  font-family: "Cutive Mono";
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -4317,6 +4320,10 @@ form[id="contact_form"] {
 
 .mt_portfolio_detail .col-sm-8 {
   padding: 0 !important;
+}
+
+.visit_button {
+  font-family: "Roboto Mono";
 }
 
 /* ================================================ */
